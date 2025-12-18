@@ -2,12 +2,20 @@
 # Relatório do Trabalho Final - Sistema operacional Arch Linux
 
 - **Alunos:** Karla Alexandra Chaves.
+
 - Dyogo Cesar
+
+- dyogo cesar goncalves silveira
+
 - **Nível:** Graduação
 - 
 ## Contribuições
 - 1 
+
 - 2 nova funcao
+
+- 2 Nova funçao
+>>>
 - 3 Reportar Bug
 - 4 
 - 
