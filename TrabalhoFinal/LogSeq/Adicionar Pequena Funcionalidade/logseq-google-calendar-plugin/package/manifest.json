@@ -1,0 +1,10 @@
+{
+  "id": "_pengx17-logseq-google-calendar-plugin",
+  "name": "Logseq Google Calendar Plugin",
+  "version": "0.1.0",
+  "description": "Sincronização entre Logseq e Google Calendar — painel Execução do Dia",
+  "main": "dist/index.html",
+  "icon": "./icons/google-calendar.png",
+  "author": "Manoel Lucas Lopes Reis",
+  "license": "MIT"
+}

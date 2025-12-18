@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>OAuth2 callback</title>
+  <style>
+    body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; padding: 2rem; }
+    .box { max-width: 720px; margin: 2rem auto; border: 1px solid #ddd; padding: 1rem; border-radius: 8px; }
+    .code { word-break: break-all; background:#f6f8fa; padding:8px; border-radius:6px; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>Autenticação concluída</h1>
+    <p>Você pode fechar esta janela. Se a aplicação abrir automaticamente, ela irá detectar o código.</p>
+    <p>Se necessário, copie manualmente o código abaixo e cole no plugin:</p>
+    <pre id="code" class="code">(aguardando...)</pre>
+    <div style="margin-top:12px">
+      <button id="sendBtn" style="padding:8px 12px;border-radius:6px;border:1px solid #ddd;background:#0ea5e9;color:white">Enviar código ao plugin</button>
+      <button id="copyBtn" style="padding:8px 12px;border-radius:6px;margin-left:8px">Copiar código</button>
+    </div>
+  </div>
+  <script>
+    // Show the code on the page so users can copy if auto flow fails
+    const params = new URLSearchParams(location.search);
+    const code = params.get('code') || params.get('error_description') || params.get('error') || '';
+    document.getElementById('code').textContent = code || '(nenhum código encontrado)';
+
+    // Post the code back to the opener window using postMessage so the plugin can
+    // receive it even across different origins. Use '*' as targetOrigin because
+    // the opener may be an app:// or another origin in Logseq dev environment.
+    function sendToOpener() {
+      try {
+        if (window.opener && code) {
+          window.opener.postMessage({ type: 'logseq_gcal_code', code }, '*');
+          return true;
+        }
+      } catch (e) {
+        // ignore
+      }
+      return false;
+    }
+
+    try { sendToOpener(); } catch(e) { /* ignore */ }
+
+    // Wire up manual buttons for cases where automatic delivery fails
+    document.getElementById('sendBtn')?.addEventListener('click', () => {
+      const ok = sendToOpener();
+      if (ok) {
+        alert('Código enviado ao plugin — você pode fechar esta janela.');
+      } else {
+        alert('Falha ao enviar automaticamente. Copie o código e cole no plugin.');
+      }
+    });
+
+    document.getElementById('copyBtn')?.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(code || '');
+        alert('Código copiado para a área de transferência');
+      } catch (e) {
+        alert('Não foi possível copiar automaticamente. Selecione e copie manualmente.');
+      }
+    });
+
+    // Try to close the window after a short delay to give the plugin time to detect it
+    setTimeout(() => {
+      try { window.close(); } catch(e) { /* ignore */ }
+    }, 1200);
+  </script>
+</body>
+</html>
