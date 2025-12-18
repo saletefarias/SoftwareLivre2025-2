@@ -24,7 +24,7 @@ Reinaldo de Jesus
 - Inserção de chat com IA no site
 - IA responde com base na documentação
 - Evidências: 
-- ![alt text](image-1.png)
+- ![alt text](image-1.png) 
 
 ---
 
