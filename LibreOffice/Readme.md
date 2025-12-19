@@ -1,27 +1,35 @@
 
 # Relatório do Trabalho Final - Sistema operacional Arch Linux
 
-- **Alunos:** Karla Alexandra Chaves.
+- **Alunos:** 
 
-- Dyogo Cesar
+- Antônio José Coelho Duailibe
 
-- dyogo cesar goncalves silveira
+- Dyogo Cesar Goncalves Silveira
+
+- Karla Alexandra Chaves
+
+- João Gabriel Sales Gonçalves
+
+- Sofia Coelho Berredo
 
 - **Nível:** Graduação
 - 
 ## Contribuições
-- 1 
+- Tradução
 
-- 2 nova funcao
+- Melhoria de Documentação
 
-- 2 Nova funçao
->>>
-- 3 Reportar Bug
-- 4 
-- 
+- Reportar Bug
+
+- Apoio à Comunidade
+
+- Conteúdo Audiovisual
+
+- Ideia de Oficina
+
 ## Reportar Bug
 
-- pagina da implementacao https://bugs.documentfoundation.org/show_bug.cgi?id=170036
-
 - Página onde o bug foi reportado ([link](https://bugs.documentfoundation.org/show_bug.cgi?id=170025)).
+  
 - Feito por Karla Alexandra Chaves
